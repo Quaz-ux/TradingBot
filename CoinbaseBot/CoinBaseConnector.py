@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 class CoinBaseConnector:
     def __init__(self):
         self.url = "https://api.exchange.coinbase.com"
