@@ -1,10 +1,28 @@
 <html>
 <head>
     <title>Trading Bot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <p>Bot for trading.</p>
-<div>{{ price }}</div>
+<div id="btc_price"></div>
+
+<script>
+function refresh() {
+$.ajax({
+        type:"GET",
+        url: '/price/',
+        success: function (data) {
+          console.log(data);
+          $('#btc_price').text(data["price"]);
+        },
+        error: function(req, err) { console.log("Error message:" + err);}
+      });
+      }
+refresh();
+$(function(){
+    setInterval(refresh, 5000);
+});
 </script>
 </body>
 </html>
